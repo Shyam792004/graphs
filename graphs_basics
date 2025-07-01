@@ -1,0 +1,57 @@
+import java.util.*;
+public class Main
+{
+    public static void printAdjList(List<List<Integer>> adj,int v)
+    {
+        System.out.println("Node");
+        {
+            for(int i=0;i<v;i++)
+            {
+                System.out.println(i+" "+adj.get(i));
+            }
+        }
+        System.out.println();
+    }
+    public static void printAdjMatrix(List<List<Integer>> adj,int v)
+    {
+        System.out.println("Matrix");
+        int ans[][]=new int[v][v];
+        for(int i=0;i<v;i++)
+        {
+            for (int num : adj.get(i))
+            {
+                ans[i][num]=1;
+            }
+        }
+        for(int i=0;i<v;i++)
+        {
+            for(int j=0;j<v;j++)
+            {
+                System.out.print(ans[i][j]+" ");
+            }
+            System.out.println();
+        }
+        
+    }
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		List<List<Integer>> adj= new ArrayList<>();
+		int v=sc.nextInt();
+		int e=sc.nextInt();
+		for(int i=0;i<v;i++)
+		{
+		    adj.add(new ArrayList<>());
+		}
+		for(int i=0;i<e;i++)
+		{
+		    int a=sc.nextInt();
+		    int b=sc.nextInt();
+		    adj.get(a).add(b);
+		    adj.get(b).add(a);
+		}
+		printAdjList(adj,v);
+		printAdjMatrix(adj,v);
+		
+		
+	}
+}
