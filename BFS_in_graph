@@ -1,0 +1,53 @@
+import java.util.*;
+public class Main
+{
+    
+    public static void BFS(List<List<Integer>> adj,int v,int start)
+    {
+        Queue<Integer>q=new LinkedList<>();
+        boolean visited[]=new boolean[v];
+        ArrayList<Integer>ans=new ArrayList<>();
+        q.add(start);
+        visited[start]=true;
+        while(!q.isEmpty())
+        {
+            int poll=q.poll();
+            ans.add(poll);
+            for(int i:adj.get(poll))
+            {
+                if(visited[i]!=true)
+                {
+                    visited[i]=true;
+                    q.add(i);
+                }
+            }
+        }
+        for(int num:ans)
+        {
+            System.out.print(num+" ");
+        }
+        
+    }
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		List<List<Integer>> adj= new ArrayList<>();
+		int v=sc.nextInt();
+		int e=sc.nextInt();
+		for(int i=0;i<v;i++)
+		{
+		    adj.add(new ArrayList<>());
+		}
+		for(int i=0;i<e;i++)
+		{
+		    int a=sc.nextInt();
+		    int b=sc.nextInt();
+		    adj.get(a).add(b);
+		    adj.get(b).add(a);
+		}
+
+		int start=0;
+		BFS(adj,v,start);
+		
+		
+	}
+}
